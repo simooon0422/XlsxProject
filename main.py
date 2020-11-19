@@ -1,4 +1,8 @@
 import xlsxwriter
+import random
+from faker import Faker
+
+fake = Faker()
 
 
 def random_data():
@@ -14,6 +18,11 @@ def random_data():
     superscript = workbook.add_format({'font_script': 1})
     subscript = workbook.add_format({'font_script': 2})
 
+    name_list = []
+    for _ in range(random.randint(10, 100)):
+        name_list.append(fake.name())
+
+    worksheet.write_column('A1', name_list)
     workbook.close()
 
 
