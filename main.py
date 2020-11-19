@@ -15,14 +15,38 @@ def random_data():
     worksheet.set_column('C1:C1', 60)
 
     # creating different formats for data
-    bold = workbook.add_format({'bold': 1})
-    italic = workbook.add_format({'italic': 1})
-    underline = workbook.add_format({'underline': 1})
-    superscript = workbook.add_format({'font_script': 1})
-    subscript = workbook.add_format({'font_script': 2})
-    red = workbook.add_format({'font_color': 'red'})
+    bold = workbook.add_format()
+    bold.set_align('center')
+    bold.set_align('vcenter')
+    bold.set_bold()
 
-    format_list = [bold, italic, underline, superscript, subscript, red]  # list of created formats
+    italic = workbook.add_format()
+    italic.set_align('center')
+    italic.set_align('vcenter')
+    italic.set_italic()
+
+    underline = workbook.add_format()
+    underline.set_align('center')
+    underline.set_align('vcenter')
+    underline.set_underline()
+
+    superscript = workbook.add_format()
+    superscript.set_align('center')
+    superscript.set_align('vcenter')
+    superscript.set_font_script(1)
+
+    subscript = workbook.add_format()
+    subscript.set_align('center')
+    subscript.set_align('vcenter')
+    subscript.set_font_script(2)
+
+    red = workbook.add_format()
+    red.set_align('center')
+    red.set_align('vcenter')
+    red.set_font_color('red')
+
+    # list of created formats
+    format_list = [bold, italic, underline, superscript, subscript, red]
 
     # format for header
     header_format = workbook.add_format()
@@ -37,7 +61,7 @@ def random_data():
 
     # loops to write no., name, address
     for i in range(rand):
-        worksheet.write(1 + i, 0, i)
+        worksheet.write(1 + i, 0, i+1)
 
     for i in range(rand):
         form = random.choice(format_list)
